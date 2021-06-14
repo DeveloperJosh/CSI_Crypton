@@ -1,1 +1,30 @@
-
+{
+  "name": "crypton-cyberspace",
+  "version": "1.0.0",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord-anti-spam": "^2.5.1",
+    "discord.js": "^12.5.3",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "mongoose": "^5.12.13",
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Synterragen/CyberSpace_Intellects.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Synterragen/CyberSpace_Intellects/issues"
+  },
+  "homepage": "https://github.com/Synterragen/CyberSpace_Intellects#readme",
+  "description": ""
+}
