@@ -5,8 +5,31 @@ const AntiSpam = require('discord-anti-spam');
 const FileSystem = require('fs');
 const CommandFolders = FileSystem.readdirSync("./Commands");
 const EventFiles = FileSystem.readdirSync("./Events").filter(File => File.endsWith(".js"));
+const Token = process.env['TOKEN'];
+
+const Antispam = new AntiSpam({
+	banMessage: "**{user_tag}** was banned for spamming.",
+	banThreshold: 10,
+	kickMessage: "**{user_tag}** was kicked for spamming.",
+	kickThreshold: 7,
+	ignoreBots: false, //Due to external clients, such as: Matrix, IRC. etc
+	ignoredMembers: [],
+	ignoredPermissions: ['ADMINISTRATOR', 'BAN_MEMBERS', 'KICK_MEMBERS'],
+	maxDuplicatesBan: 12,
+	maxDuplicatesKick: 10,
+	maxDuplicatesMute: 8,
+	maxDuplicatesWarning: 6,
+	muteMessage: "**{user_tag}** was muted for spamming.",
+	muteThreshold: 5,
+  removeMessages: true,
+	verbose: true,
+  warnMessage: "{@user}, Please stop spamming.\nSincerely, staff team.",
+  warnThreshold: 4,
+});
 
 const Client = new Discord.Client({});
+
+Client.commands = new Discord.Collection();
 
 for(const Folder of CommandFolders) {
   const CommandFiles = FileSystem.readdirSync(`./Commands/${Folder}`).filter(File => File.endsWith(".js")); 
@@ -28,6 +51,8 @@ for(const File of EventFiles) {
 }
 
 Client.on("message", message => {
+  Antispam.message(message);
+	
   if (!message.content.startsWith(Prefix) || message.author.bot) return;
 
 	const args = message.content.slice(Prefix.length).trim().split(/ +/);
