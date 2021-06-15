@@ -1,4 +1,4 @@
-modules.export = {
+module.export = {
   guildOnly: true,
   name: "kick",
   
