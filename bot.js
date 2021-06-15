@@ -71,7 +71,7 @@ Client.on("message", message => {
 	const Command = args.shift().toLowerCase();
 
 	try {
-		Client.commands.get(Command).execute(message, args);
+	Client.commands.get(Command).execute(message, args, Client, Mongoose, Discord);
 	} catch (error) {
 		console.error(error);
 		message.channel.send(`Error occurred during execution, or ${Command} was not a valid command.`);
