@@ -50,6 +50,16 @@ for(const File of EventFiles) {
   }
 }
 
+Mongoose.connect(process.env['DB_SRV'], {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	userFindAndModify: true
+}).then(() => {
+	console.log("Successfully connected to MongoDB.");
+}).catch(err => {
+	console.log("Attempt to connect to MongoDB was unsuccessful. " + err);
+});
+
 Client.on("message", message => {
   Antispam.message(message);
 	
