@@ -70,10 +70,10 @@ Client.on("message", message => {
 	const Command = args.shift().toLowerCase();
 
 	try {
-		client.commands.get(Command).execute(message, args);
+		Client.commands.get(Command).execute(message, args);
 	} catch (error) {
 		console.error(error);
-		message.reply(`Error occurred during execution, or ${Command} was not a valid command.`);
+		message.channel.send(`Error occurred during execution, or ${Command} was not a valid command.`);
 	}
 });
 
