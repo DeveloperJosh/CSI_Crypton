@@ -5,6 +5,7 @@ const AntiSpam = require('discord-anti-spam');
 const FileSystem = require('fs');
 const CommandFolders = FileSystem.readdirSync("./Commands");
 const EventFiles = FileSystem.readdirSync("./Events").filter(File => File.endsWith(".js"));
+const Mongoose = require('mongoose');
 const Token = process.env['TOKEN'];
 
 const Antispam = new AntiSpam({
