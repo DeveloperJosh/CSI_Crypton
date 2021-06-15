@@ -7,6 +7,7 @@ const CommandFolders = FileSystem.readdirSync("./Commands");
 const EventFiles = FileSystem.readdirSync("./Events").filter(File => File.endsWith(".js"));
 const Mongoose = require('mongoose');
 const Token = process.env['TOKEN'];
+const Prefix = require('./models/guildPrefix');
 
 const Antispam = new AntiSpam({
 	banMessage: "**{user_tag}** was banned for spamming.",
